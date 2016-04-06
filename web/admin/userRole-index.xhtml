@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                User Role info <br/><br/>
+                
+                <p:button outcome="userRole-create.xhtml" value="Add New" /><br></br>
+                    <h:form>
+                        <p:dataTable id="rinfo" resizableColumns="true" value="#{userRoleBean.allUserRoleInfo}" var="roleInfo" paginator="true" rows="5">
+
+                            <p:column>
+                                <f:facet name="header"> Role id</f:facet>
+                                    #{roleInfo.roleid}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Role Name</f:facet>
+                                    #{roleInfo.rolename}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Edit</f:facet>
+                                <p:commandLink value="Edit" action="#{userRoleBean.goEditPage}" >
+                                    <f:setPropertyActionListener target="#{userRoleBean}" value="#{roleInfo}" />
+                                </p:commandLink>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <p:commandLink value="Delete" action="#{userRoleBean.deleteUserRole}" onclick="if (!confirm('sure to delete #{displayUserRole.rolename}?'))
+                                            return false;" update="rinfo">
+                                    <f:setPropertyActionListener target="#{userRoleBean}" value="#{roleInfo}" />
+                                </p:commandLink>                                
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form>            
+
+               <br/><br/><br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

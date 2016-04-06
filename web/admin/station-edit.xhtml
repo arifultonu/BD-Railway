@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data"> 
+
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Station Name"/>
+                        <p:inputText value="#{routeInfoBean.stname}" id="stname" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="stname"/>
+
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Update" action="#{routeInfoBean.updateStation}" />
+                    </p:panelGrid>
+
+                </h:form>
+
+                <br/><br/>
+                <p:button outcome="station-index.xhtml" value="GoBack" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

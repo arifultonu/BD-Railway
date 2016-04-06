@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">  
+
+                    <p:growl id="growl" showDetail="true" />  
+
+                    <p:dashboard id="board" model="#{dashboardBean.model}">  
+                        <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" update="growl" />  
+
+                        <p:panel id="passenger" header="Setting Passengers">  
+                            <h:outputText value="Total Passengers= #{passengerInfoBean.allpassenger()}"/><br/><br/>
+                            <p:commandButton value="passenger" action="passenger-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="ticketManager" header="Setting TicketManagers">  
+                            <h:outputText value="Total TicketManagers = #{ticketManagerBean.allticketmanager()}"/><br/><br/>
+                            <p:commandButton value="TicketManagers" action="ticketManager-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="class" header="Setting Class">                              
+                            <p:commandButton value="Class" action="class-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="fare" header="Setting Fare">                              
+                            <p:commandButton value="Fare" action="fare-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="reservation" header="Setting Reservation">                              
+                            <p:commandButton value="Reservation" action="reservation-index?faces-redirect=true"/> 
+                        </p:panel>  
+
+                        <p:panel id="train" header="Setting TrainInfo">  
+                            <h:outputText value="Total TrainInfo = #{trainInfoBean.allTrain()}"/><br/><br/>
+                            <p:commandButton value="TrainInfo" action="trainInfo-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="userRole" header="Setting UserRole">                              
+                            <p:commandButton value="UserRole" action="userRole-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="route" header="Setting Route">  
+<!--                             <h:outputText value="Total Route = "/><br/><br/>-->
+                            <p:commandButton value="Route" action="route-index?faces-redirect=true"/>
+                        </p:panel>  
+
+                        <p:panel id="station" header="Setting Station">  
+<!--                             <h:outputText value="Total Station = "/><br/><br/>-->
+                            <p:commandButton value="Station" action="station-index?faces-redirect=true"/>
+                        </p:panel> 
+
+                        <p:panel id="TrainSeat" header="Setting TrainSeat">                               
+                            <p:commandButton value="TrainSeat" action="trainSeat-index?faces-redirect=true"/>  
+                        </p:panel> 
+
+                        <p:panel id="User" header="Setting User">  
+<!--                             <h:outputText value="Total User = "/><br/><br/>-->
+                            <p:commandButton value="User" action="user-index?faces-redirect=true"/>  
+                        </p:panel> 
+
+                        <p:panel id="Notice" header="Setting Notice">                            
+                            <p:commandButton value="Notice" action="notice-index?faces-redirect=true"/>  
+                        </p:panel> 
+
+                    </p:dashboard>  
+
+                </h:form>   
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>
+

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Add New Station <br/><br/>
+                <h:form enctype="multipart/form-data"> 
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Station Name"/>
+                        <p:inputText value="#{routeInfoBean.stname2}" id="stname2" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="stname2"/> 
+                    
+                        <h:outputText value="Route Name"/>
+                        <p:selectOneMenu value="#{routeInfoBean.rid}">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{routeInfoBean.allRoute}"  var="item"
+                                       itemLabel="#{item.rname}" itemValue="#{item.rid}" />                         
+                        </p:selectOneMenu><br/>
+                    
+                        <h:outputText value=""/>
+                        <p:commandButton value="Save" action="#{routeInfoBean.insertStation}" />
+                    </p:panelGrid>
+                </h:form>
+            <br/><br/>
+          
+            <p:button outcome="station-index.xhtml" value="Go Back" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+         
+

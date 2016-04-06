@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+     <filter>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+    
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY </param-name>
+        <param-value>6Lc6PeYSAAAAAFNP7rJVqr0esd9352jVVIgZawtS</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6Lc6PeYSAAAAAIzCW6knnkcg2twD6f691WUY0YM2</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>DisplayRailwayPhoto</servlet-name>
+        <servlet-class>com.railway.notice.DisplayRailwayPhoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayRailwayPhoto</servlet-name>
+        <url-pattern>/DisplayRailwayPhoto</url-pattern>
+    </servlet-mapping>
+     
+    <servlet>
+        <servlet-name>DisplayTicketManagerPhoto</servlet-name>
+        <servlet-class>com.railway.model.ticketmanager.DisplayTicketManagerPhoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayTicketManagerPhoto</servlet-name>
+        <url-pattern>/DisplayTicketManagerPhoto</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+            <link href="${request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css" /> 
+            <link href="${request.contextPath}/resources/css/ddsmoothmenu.css" rel="stylesheet" type="text/css" /> 
+            <link href="${request.contextPath}/resources/css/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" /> 
+            <link href="${request.contextPath}/resources/css/grid.css" rel="stylesheet" type="text/css" /> 
+
+            <script type="text/javascript" src="${request.contextPath}/resources/js/ddsmoothmenu.js"></script>
+
+
+            <title>BD Railway</title>
+        </h:head>
+
+        <h:body> 
+
+
+            <div class="header head-pat1">
+                <div class="container_12">
+
+                     <div class="heading">
+                    <div class="grid_9">  
+                         <h:graphicImage library="images" name="logo.png" title="logo"/>
+                         <div class="logo"> BD Railway <br/><span class="sub-title">Ticket Reservation System </span></div>
+
+                            <!-- Start NAVIGATION -->
+                            <div class="navigation">
+                                <div id="smoothmenu1" class="ddsmoothmenu">
+                                    <ul>
+                                        <li class="first"><a href="index.xhtml">Home</a></li>                                
+                                        <li><a href="./public/route.xhtml">Route</a> </li>                              
+                                        <li><a href="./public/fare.xhtml">Fare</a></li>
+                                        <li><a href="./public/about-us.xhtml">About us</a></li>
+                                        <li><a href="./public/contact-us.xhtml">Contact us</a></li>
+                                    </ul>
+                                    <br style="clear: left" />
+                                </div>
+                            </div> 
+                        </div>
+                        <!-- END NAVIGATION -->
+                        <div class="grid_3"> 
+                            <div class="header-right">
+                                <div class="contact">
+                                    <ul>  
+                                        <li><h:graphicImage library="images" name="contact.png" title="Contact"/> </li>
+                                        <li>Call-Now<br/>01717-819612 </li>                              
+                                    </ul>                         
+                                </div>
+                               
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>  
+
+
+            </div>
+
+            <!-- START CONTENT -->
+            <div class="clear"></div> 
+            <div class="main_content">
+                <div class="container_12">               
+                    <ui:insert name="content"></ui:insert>             
+                </div>
+            </div>
+            <!-- END CONTENT -->
+
+            <!-- START FOOTER -->
+            <div class="clear"></div> 
+            <div class="foot footer-part1">
+                <div class="container_12">
+                    <div id="footer">  
+                        <div class="grid_3">                        
+                            <ul>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                            </ul>
+                        </div>
+                        <div class="grid_3">
+                            <ul>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                            </ul>
+                        </div>
+                        <div class="grid_3">
+                            <ul>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                            </ul>
+                        </div>
+                        <div class="grid_3">
+                            <ul>
+                                <li><a href="#">BD Railway Corporation</a></li>
+                                <li>© 2013 <a href="#">BD Railway</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- END FOOTER -->
+
+
+        </h:body>
+    </f:view>
+</html>

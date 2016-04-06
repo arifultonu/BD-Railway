@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./managerTemplate.xhtml">
+
+             <ui:define name="content">
+                Passenger Reservation Info<br/><br/>
+                <h:form enctype="multipart/form-data"> 
+
+                    <p:dataTable id="dreservation" value="#{displayReservationBean.searchR}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> Journey Date </f:facet>
+                                #{item.jdate}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Passenger Name</f:facet>
+                                #{item.passname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Train Name </f:facet>
+                                #{item.tname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Class Name </f:facet>
+                                #{item.classname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Adult </f:facet>
+                                #{item.aap}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Child </f:facet>
+                                #{item.anap}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> PTN </f:facet>
+                                #{item.ptn}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Status </f:facet>
+                                #{item.status}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Total Fare </f:facet>
+                                #{item.fa}
+                        </p:column>
+                        <!--p:column>
+                            <f:facet name="header">Payment Fare </f:facet>
+                            <p:commandLink value="Pay" action="{displayReservationBean.payment}"
+                                           onclick="if (!confirm('Sure to Pay {item.bid}?'))
+                                                       return true;"  update="dreservation">
+                                <f:setPropertyActionListener target="{displayReservationBean}" value="{item}" />
+                            </p:commandLink>
+                        </p:column--> 
+                        <p:column>
+                            <f:facet name="header"> Payment Fare </f:facet> 
+                            <h:outputText value="Paid"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form> 
+                <p:commandButton value="Print Ticket" action="#{displayReservationBean.pticket}"/><br/><br/>
+                <!--h:link value="Go to Home" outcome="search_train.xhtml"/><br/>
+                <h:link value="Back to search" outcome="search_Reservation.xhtml"-->
+                <p:button outcome="search-reservation.xhtml" value="Another Search" />&nbsp;
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

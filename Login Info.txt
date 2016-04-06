@@ -1,0 +1,16 @@
+Admin Login Info:
+
+User Name: admin
+Password: 123
+---------------
+passenger Login Info:
+
+User Name: mohsin
+Password: 123
+
+---------------
+
+Ticket Manager Login Info:
+
+User Name: nabil
+Password: 123

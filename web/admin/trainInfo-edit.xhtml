@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data"> 
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Train Number"/>
+                        <p:inputText value="#{trainInfoBean.tnumber}" id="tnumber" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="tnumber"/> 
+
+                        <h:outputText value="Train Name"/>
+                        <p:inputText value="#{trainInfoBean.tname}" id="tname" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="tname"/> 
+
+                        <h:outputText value="Route Name"/>
+                        <p:selectOneMenu value="#{trainInfoBean.routename}">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{trainInfoBean.allRoute}"  var="item"
+                                           itemLabel="#{item.routename}" itemValue="#{item.routename}" />
+                            <p:ajax event="change" update="st"/>
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Station To"/>
+                        <p:selectOneMenu value="#{trainInfoBean.stname}" id="st">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{trainInfoBean.routeWiseStation}"  var="item"
+                                           itemLabel="#{item.stname}" itemValue="#{item.stname}" />
+                            <p:ajax event="change" update="st2"/>
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Station From"/>
+                        <p:selectOneMenu value="#{trainInfoBean.stname2}" id="st2">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{trainInfoBean.routeWiseStation2}"  var="item"
+                                           itemLabel="#{item.stname2}" itemValue="#{item.stname2}" />   
+                            <p:ajax event="change" update="st3"/>
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Deperture Time"/>
+                        <p:inputText value="#{trainInfoBean.deptime}" id="deptime" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="deptime"/> 
+
+                        <h:outputText value="Arival Time"/>
+                        <p:inputText value="#{trainInfoBean.atime}" id="atime" required="true" requiredMessage="#{errMsg}"/>
+                        <p:message for="atime"/>
+
+
+                        <h:outputText value="Off Day"/>
+                        <p:selectOneMenu value="#{trainInfoBean.dname}" id="st3">
+                            <f:selectItem itemLabel="--Select Day--" itemValue=""/>
+                            <f:selectItems value="#{trainInfoBean.dayName}"  var="item"
+                                           itemLabel="#{item.dname}" itemValue="#{item.dname}" />                        
+                        </p:selectOneMenu><br/>                       
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Save" action="#{trainInfoBean.updateData}" />
+                    </p:panelGrid>
+                </h:form>
+
+                <br/><br/>
+                <p:button outcome="trainInfo-index.xhtml" value="Go Back" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

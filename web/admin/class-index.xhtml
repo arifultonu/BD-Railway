@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Train Class info <br/><br/>
+                
+                <p:button outcome="class-create.xhtml" value="Add New" /><br></br>
+                 
+                <h:form>
+                    <p:dataTable id="cinfo" resizableColumns="true" value="#{classNameBean.allclassInfo}" var="classinfo" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                       
+                        <p:column filterBy="#{classNameBean.classid}">
+                            <f:facet name="header">Class Id</f:facet>
+                            #{classinfo.classid}
+                        </p:column>
+                        
+                        <p:column filterBy="#{classNameBean.classname}">
+                            <f:facet name="header">Class Name</f:facet>
+                                #{classinfo.classname}
+                        </p:column>
+
+                        <p:column filterBy="#{classNameBean.classseat}">
+                            <f:facet name="header">Class Seat</f:facet>
+                                #{classinfo.classseat}
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">Edit</f:facet>
+                            <p:commandLink value="Update" action="#{classNameBean.goEditPage()}">
+                                <f:setPropertyActionListener target="#{classNameBean}" value="#{classinfo}"/>
+                            </p:commandLink>
+                        </p:column>
+                       
+                        <p:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <p:commandLink value="Delete" action="#{classNameBean.deleteClass}"
+                                           onclick="if (!confirm('Sure to delete #{classinfo.classname}?'))
+                                                   return false;" update="cinfo">                             
+                                <f:setPropertyActionListener target="#{classNameBean}" value="#{classinfo}" />
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>                   
+                  
+                </h:form> 
+                 
+                 <br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

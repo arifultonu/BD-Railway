@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+             <ui:define name="content">
+                Add New Fare <br/><br/>
+                <h:form enctype="multipart/form-data"> 
+                    <p:panelGrid columns="3">                    
+                        <h:outputText value="Route Name"/>
+                        <p:selectOneMenu value="#{addFareBean.routename}" required="true" requiredMessage="Please select Route Name" style="width: 210px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{addFareBean.allRoute}" var="item" itemLabel="#{item.routename}" itemValue="#{item.routename}"/>
+                            <p:ajax event="change"  update="st"  />
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Station From"/>
+                        <p:selectOneMenu value="#{addFareBean.station}"   id="st" required="true" requiredMessage="Please select Station From" style="width: 210px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{addFareBean.allStation}" var="item" itemLabel="#{item.station}" itemValue="#{item.station}"/>
+                            <p:ajax event="change"  update="st1"  />
+
+
+                        </p:selectOneMenu><br/>
+                        <h:outputText value="Station To"/>
+                        <p:selectOneMenu value="#{addFareBean.station2}"   id="st1" required="true" requiredMessage="Please select Station To" style="width: 210px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{addFareBean.allStation2}" var="item" itemLabel="#{item.station}" itemValue="#{item.station}"/>
+                            <p:ajax event="change"  update="cn"  />
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Class Name"/>
+                        <p:selectOneMenu value="#{addFareBean.classname}" id="cn" required="true" requiredMessage=" Enter fare amount" style="width: 212px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{addFareBean.allClass}"/>
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Fare Amount"/>
+                        <h:inputText value="#{addFareBean.fareamount}" id="famount" required="true" requiredMessage="Please enter the fare amount"/>
+                        <h:message for="famount"/>
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Submit" action="#{addFareBean.save}" update="addNew" ajax="false"/>
+                    </p:panelGrid>
+
+                </h:form>
+                <br/><br/>
+
+                <p:button outcome="fare-index.xhtml" value="Go Back" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+
+
+
+

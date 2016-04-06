@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Add New Ticket Manager<br/><br/>
+                <h:form enctype="multipart/form-data"> 
+                    <p:growl id="addNew" showDetail="true"/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Ticket Manager Name"/>
+                        <p:inputText value="#{ticketManagerBean.tman_name}" id="tmname" required="true" requiredMessage="Please enter your Name"/>                        
+                        <p:watermark for="tmname" value="Enret your name"/>
+                        
+                        <h:outputText value=" Present Address"/>
+                        <p:inputTextarea value="#{ticketManagerBean.tman_address}" id="tmpaddress" required="true" requiredMessage="Please enter your Address" style="width: 200px"/>                       
+                        <p:watermark for="tmpaddress" value="Enter your Address"/>
+
+                        <h:outputText value="Gender"/>
+                        <p:selectOneRadio value="#{ticketManagerBean.sex}" id="gender" required="true" requiredMessage="Please select one" >
+                            <f:selectItem itemLabel="Male" itemValue="Male" />
+                            <f:selectItem itemLabel="Female" itemValue="Female" />                        
+                        </p:selectOneRadio>
+                        <p:message for="gender"/>  
+
+                        <h:outputText value="Email"/>
+                        <p:inputText id="email" required="true" label="email" size="20"
+                                     requiredMessage="Please enter your email address."
+                                     validatorMessage="Incorrect email!"
+                                     value="#{ticketManagerBean.tman_email}"> 
+                            <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>                      
+                        <p:watermark for="email" value="Enter Email Address" />
+
+                        <h:outputText value="Date of Birth :"/>
+                        <p:calendar  value="#{ticketManagerBean.dob}" id="dob" pattern="dd/MM/yyyy"  required="true" requiredMessage="Please enter your Date of Birth"/>
+                        <p:watermark for="dob" value="Enter Date of birth" />
+
+                        <h:outputText value="Phone"/>
+                        <p:inputText value="#{ticketManagerBean.tman_phone}" id="phone" required="true" requiredMessage="Please enter your Phone number"/>                      
+                        <p:watermark for="phone" value="Enter your Phone No"/>
+
+                        <h:outputText value="Route Name"/>
+                        <p:selectOneMenu value="#{ticketManagerBean.routename}" required="true" requiredMessage="Please select Route Name" style="width: 210px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{ticketManagerBean.allRoute}" var="item" itemLabel="#{item.routename}" itemValue="#{item.routename}"/>
+                            <p:ajax event="change" listener="#{ticketManagerBean.routeName()}" update="st" />
+                        </p:selectOneMenu><br/>
+
+                        <h:outputText value="Station Name"/>
+                        <p:selectOneMenu value="#{ticketManagerBean.stationname}" required="true" requiredMessage="Please select Station Name"  id="st" style="width: 210px">
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{ticketManagerBean.allStation}" var="item" itemLabel="#{item.stationname}" itemValue="#{item.stationname}"/>
+                            <p:ajax event="change" listener="#{ticketManagerBean.statioNname()}" />
+                        </p:selectOneMenu><br/>                      
+
+                        <h:outputText value="Photo :"/>
+                        <p:fileUpload value="#{ticketManagerBean.file}" mode="simple" id="photo" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" requiredMessage="Please select your photo"/>
+                        <p:watermark for="pass" value="Enter your Passwor"/>
+
+                        <h:outputText value="User Name"/>
+                        <p:inputText value="#{ticketManagerBean.uname}" id="uname" required="true" requiredMessage="Please Enter Your User Name"/>                        
+                        <p:watermark for="uname" value="Enter your User name"/>
+
+                        <h:outputText value="Password"/>
+                        <p:password value="#{ticketManagerBean.pass}" id="pass" required="true" requiredMessage="Please Enter Your Password"/>                     
+                        <p:watermark for="pass" value="Enter your Passwor"/>
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Submit" action="#{ticketManagerBean.doInsert()}" update="addNew" ajax="false" />
+                    </p:panelGrid>
+
+                </h:form>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

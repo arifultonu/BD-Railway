@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./managerTemplate.xhtml">
+
+             <ui:define name="content">
+                Search Reservation<br/><br/>
+                <h:form enctype="multipart/form-data"> 
+
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Passenger Id"/>
+                        <p:inputText value="#{displayReservationBean.passId}" id="passId" required="true" requiredMessage="#{errMsg}" title="Please Enter Passenger Id!"/>
+                        <p:tooltip for="passId" showEvent="focus" hideEvent="blur" />
+                        <h:outputText value="PTN Number"/>
+                        <p:inputText value="#{displayReservationBean.ptn2}" id="ptn2" required="true" requiredMessage="#{errMsg}" title="Please Enter First and Last 3 PTN Number!"/>
+                        <p:tooltip for="ptn2" showEvent="focus" hideEvent="blur" />  
+                        <h:outputText value=""/>
+                        <p:commandButton value="Submit" action="#{displayReservationBean.serchderction}" style="width: 215px"/>
+                    </p:panelGrid>
+                </h:form> <br/><br/>
+       
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

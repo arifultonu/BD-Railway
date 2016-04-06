@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Edit Ticket Manager  <br/><br/>                
+                <h:form enctype="multipart/form-data">
+                   
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Name"/>
+                        <p:inputText value="#{ticketManagerBean.tman_name}"/>
+
+                        <h:outputText value="Present Address"/>
+                        <p:inputText value="#{ticketManagerBean.tman_address}"/>
+
+                        <h:outputText value="Gender"/>
+                        <p:selectOneRadio value="#{ticketManagerBean.sex}">
+                            <f:selectItem itemLabel="Male" itemValue="Male"/>
+                            <f:selectItem itemLabel="Female" itemValue="Female"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText value="Email"/>
+                        <p:inputText value="#{ticketManagerBean.tman_email}"/>
+
+                        <h:outputText value="Date of Birth"/>
+                        <p:calendar value="#{ticketManagerBean.dob}" pattern="dd/MM/yyyy"/>
+
+                        <h:outputText value="Phone"/>
+                        <p:inputText value="#{ticketManagerBean.tman_phone}"/>
+
+                        <h:outputText value="Route Name"/>
+                        <p:selectOneMenu value="#{ticketManagerBean.routename}" required="true" requiredMessage="Please select Route Name" style="width: 210px"> 
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{ticketManagerBean.allRoute}" var="item" itemLabel="#{item.routename}" itemValue="#{item.routename}"/>
+                            <p:ajax event="change" listener="#{ticketManagerBean.routeName()}" update="st"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="Station Name"/>
+                        <p:selectOneMenu value="#{ticketManagerBean.stationname}" id="st" required="true" requiredMessage="Please select Station Name" style="width: 210px">  
+                            <f:selectItem itemLabel="--Select--" itemValue=""/>
+                            <f:selectItems value="#{ticketManagerBean.allStation}" var="item" itemLabel="#{item.stationname}" itemValue="#{item.stationname}"/>
+                            <p:ajax event="change" listener="#{ticketManagerBean.statioNname()}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Update" action="#{ticketManagerBean.updateInfo()}" update="gl" ajax="false"/>
+                    </p:panelGrid>
+
+                </h:form>
+                <br/><br/>
+                <p:button outcome="ticketManager-index.xhtml" value="Go Back" /> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

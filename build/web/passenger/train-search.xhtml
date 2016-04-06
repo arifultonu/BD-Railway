@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./pasTemplate.xhtml">
+
+            <ui:define name="content">
+                Search Train To Reserve<br/><br/>
+                <h:form id="allform" enctype="multipart/form-data" > 
+                    <p:panelGrid columns="3"> 
+                        <h:outputText value="Journey Date:"/>
+                        <p:selectOneMenu value="#{searchTrainBean.sdate}" style="width:220px ">
+                            <f:selectItem itemLabel="--Select Date--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.journeyDate}" var="item"
+                                           itemLabel="#{item.sdate}"  itemValue="#{item.sdate}"/>
+                            <p:ajax event="change" update="rt"/>
+                        </p:selectOneMenu><br/>
+                        <h:outputText value="Journey Route:"/>
+                        <p:selectOneMenu value="#{searchTrainBean.rname}" id="rt" style="width:220px">
+                            <f:selectItem itemLabel="--Select Route--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.allRoute}" var="item"
+                                           itemLabel="#{item.rname}" itemValue="#{item.rname}"/>
+                            <p:ajax event="change" update="stt"/>
+                        </p:selectOneMenu><br/>
+                        <h:outputText value="Journey From:"/>
+                        <p:selectOneMenu value="#{searchTrainBean.stname1}" id="stt" style="width:220px">
+                            <f:selectItem itemLabel="--Select from Station--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.allStation}" var="item"
+                                           itemLabel="#{item.stname1}" itemValue="#{item.stname1}"/>
+                            <p:ajax event="change" update="stt1"/>
+                        </p:selectOneMenu><br/>
+                        <h:outputText value="Journey For (To):"/>
+                        <p:selectOneMenu value="#{searchTrainBean.stname2}" id="stt1" style="width:220px">
+                            <f:selectItem itemLabel="--Select To Station--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.allStation2}" var="item"
+                                           itemLabel="#{item.stname2}" itemValue="#{item.stname2}"/>
+                            <p:ajax event="change" update="avt"/>
+                        </p:selectOneMenu><br/>
+                        <h:outputText value="Available Train:"/>
+                        <p:selectOneMenu value="#{searchTrainBean.availabaletrain}" id="avt" style="width:220px">
+                            <f:selectItem itemLabel="--Select Train--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.allTrain}" var="item"
+                                           itemLabel="#{item.availabaletrain}" itemValue="#{item.availabaletrain}"/>
+                            <p:ajax event="change" update="tclass"/>
+                        </p:selectOneMenu><br/>  
+                        <h:outputText value="Class:"/>
+                        <p:selectOneMenu value="#{searchTrainBean.classname}" id="tclass" style="width:220px">
+                            <f:selectItem itemLabel="--Select Train--" itemValue=""/>
+                            <f:selectItems value="#{searchTrainBean.classes}" var="item"
+                                           itemLabel="#{item.classname}" itemValue="#{item.classname}"/>
+
+                            <p:ajax event="change" update="atrain"/>
+                            <p:ajax event="change" update="atrain2"/>                       
+                        </p:selectOneMenu><br/> 
+                        
+                    </p:panelGrid><br/> <br/> 
+                    
+
+                    <h:outputText value="Avilable train" style="font: Arial; font-size: 20px; color: #00b4ff"/><br/><br/>
+                    <p:dataTable id="atrain" value="#{searchTrainBean.searchRes}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> Train Number</f:facet>
+                                #{item.tnumber}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Train Name </f:facet>
+                                #{item.tname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Departure Time </f:facet>
+                                #{item.dtime}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Arrival Time </f:facet>
+                                #{item.atime}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Off Day </f:facet>
+                                #{item.od}
+                        </p:column> 
+                        <!--p:column>
+                            <f:facet name="header">Purchase</f:facet>
+                            <p:commandLink value="Purchase Ticket" action="{searchTrainBean.goToPurchase}">
+                                <f:setPropertyActionListener target="{searchTrainBean}" value="{item}" />
+                            </p:commandLink>
+                        </p:column-->  
+                    </p:dataTable><br/>
+
+                    <!--p:outputLabel value="Purchase Ticket" style="font: Arial; font-size: 30px; color: hotpink"/-->               
+                    <p:dataTable id="atrain2" value="#{searchTrainBean.purchaseInfo}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> Class Name </f:facet>
+                                #{item.classname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Available Seat </f:facet>
+                            <p:inputText value="#{searchTrainBean.aseat2}" id="as"/>
+
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Fare Par Seat </f:facet>
+                                #{item.afare}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Adult Passenger </f:facet>
+                            <p:selectOneMenu value="#{searchTrainBean.aap}" id="ap" style="width:130px">
+                                <f:selectItems value="#{searchTrainBean.apass}" var="item"
+                                               itemLabel="#{item.aap}" itemValue="#{item.aap}"/>
+                                <p:ajax event="change" update="nap"/>
+                            </p:selectOneMenu>
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Child(50% Less) </f:facet>                        
+                            <p:selectOneMenu value="#{searchTrainBean.anap}" id="nap"  style="width:130px">
+                                <f:selectItems value="#{searchTrainBean.naPass}" var="item"
+                                               itemLabel="#{item.anap}" itemValue="#{item.anap}"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Confirm Reservation </f:facet >
+                            <p:commandButton  value="Researve It!" action="#{searchTrainBean.reservation}" update="as" style="width:150px"/>
+                        </p:column>                   
+                    </p:dataTable><br/> 
+                 
+                </h:form>  
+               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

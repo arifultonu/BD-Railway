@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">               
+
+                <h:form enctype="multipart/form-data"> 
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Pass Id: "/>
+                        <h:outputText value="#{passengerInfoBean.passid}" />
+
+                        <h:outputText value="First Name: "/>
+                        <p:inputText value="#{passengerInfoBean.fname}" />
+
+                        <h:outputText value="Last Name: "/>
+                        <p:inputText value="#{passengerInfoBean.lname}" />
+
+                        <h:outputText value="Address: "/>
+                        <p:inputTextarea value="#{passengerInfoBean.address}" />
+
+                        <h:outputText value="Phone: "/>
+                        <p:inputText value="#{passengerInfoBean.phone}" />
+
+                        <h:outputText value="Email: "/>
+                        <p:inputText value="#{passengerInfoBean.email}" />                        
+
+                        <h:outputText value="Dob: "/>
+                        <p:calendar pattern="EEE, dd MMM, yyyy" showButtonPanel="true" value="#{passengerInfoBean.dob}" navigator="true"/>
+
+                        <h:outputText value="Sex: "/>
+                        <p:inputText value="#{passengerInfoBean.sex}" />
+
+                        <h:outputText value="Reg. Date: "/>
+                        <h:outputText value="#{passengerInfoBean.reg_date}" />
+                        
+                        <h:outputText value="User Id:"/>
+                        <h:outputText value="#{passengerInfoBean.p_user_id}"/>
+
+                        <h:outputText value=""/>
+                        <p:commandButton value="Update" action="#{passengerInfoBean.editPassInfo}" />
+                    </p:panelGrid>
+                </h:form>
+                <br/><br/>
+                 <p:button outcome="passenger-index.xhtml" value="Go Back" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

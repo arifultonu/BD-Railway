@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./managerTemplate.xhtml">
+
+            <ui:define name="content">
+               
+                 Ticket Manager Info   <br/><br/>    
+
+                <h:form enctype="multipart/form-data"> 
+                    <p:dataTable id="pasInfo" value="#{ticketManagerBean.aticketmanager}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> ID </f:facet>
+                               #{item.tman_id}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Name </f:facet>
+                               #{item.tman_name} 
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Route Name</f:facet>
+                                #{item.routename}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Station Name </f:facet>
+                               #{item.stationname}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> Address </f:facet>
+                               #{item.tman_address}
+                        </p:column> 
+                         <p:column>
+                            <f:facet name="header"> Email </f:facet>
+                               #{item.tman_email}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> DOB </f:facet>
+                                #{item.dob}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Sex </f:facet>
+                                #{item.sex}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Reg.Date </f:facet>
+                               #{item.reg_date}
+                        </p:column> 
+                        <!--<p:column>
+                            <f:facet name="header"> t_user_id </f:facet>
+                                #{item.t_user_id}
+                        </p:column> -->
+                        
+                        <p:column>
+                            <f:facet name="header">Photo</f:facet>
+                            <h:graphicImage value="../DisplayTicketManagerPhoto?tman_pic=#{item.tman_id}" width="50" height="60"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form> 
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

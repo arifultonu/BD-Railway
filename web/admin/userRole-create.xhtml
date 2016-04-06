@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Add New User Role <br/><br/>
+                <h:form>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Role ID: "/>
+                        <p:inputText id="rid" value="#{userRoleBean.roleid}" required="true" requiredMessage="Please Enter role Id"/>
+                        <p:message for="rid"/>
+                        
+                        <h:outputText value="Role Name: "/>
+                        <p:inputText id="rnm" value="#{userRoleBean.rolename}" required="true" requiredMessage="Please Enter role Name"/>
+                        <p:message for="rnm"/>
+                        
+                        <h:outputText value=""/>
+                        <p:commandButton value="Save" action="#{userRoleBean.addUserRole}" />
+                    </p:panelGrid>                
+
+                </h:form><br/><br/>
+
+                 <p:button outcome="userRole-index.xhtml" value="Go Back" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+               Passenger List <br/><br/>            
+                    <h:form>
+                        <p:dataTable id="pinfo" resizableColumns="true" value="#{passengerInfoBean.allPassengerInfo}" lazy="true" rowKey="#{passInfo.passid}" var="passInfo" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                            <p:column filterBy="#{passengerInfoBean.passid}" >
+                                <f:facet name="header">id</f:facet>
+                                    #{passInfo.passid}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.fname}">
+                                <f:facet name="header">FName</f:facet>
+                                    #{passInfo.fname}
+                            </p:column>                            
+                            <p:column filterBy="#{passengerInfoBean.lname}">
+                                <f:facet name="header">LName</f:facet>
+                                    #{passInfo.lname}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.address}">
+                                <f:facet name="header">Address</f:facet>
+                                    #{passInfo.address}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.phone}">
+                                <f:facet name="header">Phone</f:facet>
+                                    #{passInfo.phone}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.email}">
+                                <f:facet name="header">Email</f:facet>
+                                    #{passInfo.email}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.dob}">
+                                <f:facet name="header">DOB</f:facet>
+                                    #{passInfo.dob}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.sex}">
+                                <f:facet name="header">Sex</f:facet>
+                                    #{passInfo.sex}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.reg_date}">
+                                <f:facet name="header">Reg.Date</f:facet>
+                                    #{passInfo.reg_date}
+                            </p:column>
+                            <p:column filterBy="#{passengerInfoBean.p_user_id}">
+                                <f:facet name="header">UserId</f:facet>
+                                #{passInfo.p_user_id}
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Update</f:facet>
+                                <p:commandLink value="Edit" action="#{passengerInfoBean.goEditPage}" >
+                                    <f:setPropertyActionListener target="#{passengerInfoBean}" value="#{passInfo}" />
+                                </p:commandLink>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <p:commandLink value="Delete" action="#{passengerInfoBean.deletePassInfo}" onclick="if (!confirm('sure to delete #{passengerInfoBean.passid}?'))
+                                            return false;" update="pinfo">
+                                    <f:setPropertyActionListener target="#{passengerInfoBean}" value="#{passInfo}" />
+                                </p:commandLink>                                
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form>            
+
+               <br/><br/><br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"      
+      xmlns:p="http://primefaces.org/ui"          
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./pasTemplate.xhtml">
+
+           <ui:define name="content"> 
+                Personal Info   <br/><br/>    
+
+                <h:form enctype="multipart/form-data"> 
+                    <p:dataTable id="pasInfo" value="#{passengerInfoBean.APassengerInfo}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> First Name </f:facet>
+                                #{item.fname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Last Name </f:facet>
+                                #{item.lname}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Address</f:facet>
+                                #{item.address}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Phone </f:facet>
+                                #{item.phone}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> Email </f:facet>
+                                #{item.email}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> DOB </f:facet>
+                                #{item.dob}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Sex </f:facet>
+                                #{item.sex}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Reg. Date </f:facet>
+                                #{item.reg_date}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Pass ID </f:facet>
+                                #{item.passid}
+                        </p:column> 
+
+                    </p:dataTable>
+                </h:form> 
+
+
+                <!--Start Reservation Status -->
+                <br/><br/>
+                Active Reservation <br/>
+                <h:form enctype="multipart/form-data"> 
+                    <p:dataTable id="res" value="#{displayReservationToPassBean.passReservation}" var="item" >
+                         <p:column>
+                            <f:facet name="header">Book ID</f:facet>
+                                #{item.book_id}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Journey Date</f:facet>
+                                #{item.jdate}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Train</f:facet>
+                                #{item.tname}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Class</f:facet>
+                                #{item.classname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Adult</f:facet>
+                                #{item.aap}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Child</f:facet>
+                                #{item.anap}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Fare</f:facet>
+                                #{item.fa}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">PTN</f:facet>
+                                #{item.ptn}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">Print</f:facet>
+                            <p:commandLink value="Print" action="#{displayReservationToPassBean.printTicket}" >
+                                <f:setPropertyActionListener target="#{userRoleBean}" value="#{roleInfo}" />
+                            </p:commandLink>
+                        </p:column>
+                         <p:column>
+                            <f:facet name="header">Cancel</f:facet>
+                            <p:commandLink value="Cancel" action="#{displayReservationToPassBean.cancelReservation()}"
+                                           onclick="if (!confirm('Sure to Cancel #{item.book_id}?'))
+                                                       return false;"  update="res">
+                                <f:setPropertyActionListener target="#{displayReservationToPassBean}" value="#{item}" />
+                            </p:commandLink>
+                        </p:column>  
+                    </p:dataTable>
+                </h:form> 
+
+
+                <br/><br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./pasTemplate.xhtml">
+
+            <ui:define name="content">
+                Reservation Failed ! <br/><br/>
+                <h:form enctype="multipart/form-data"> 
+                    <p:dataTable id="res" value="#{displayReservationToPassBean.successConfirmation}" var="item" >
+                        <p:column>
+                            <f:facet name="header"> Journey Date </f:facet>
+                                #{item.jdate}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Train Name </f:facet>
+                                #{item.tname}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> Class Name </f:facet>
+                                #{item.classname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> Adult </f:facet>
+                                #{item.aap}
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header"> Child </f:facet>
+                                #{item.anap}
+                        </p:column> 
+                         <p:column>
+                            <f:facet name="header"> Fare </f:facet>
+                                #{item.fa}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"> PTN Number </f:facet>
+                                #{item.ptn}
+                        </p:column> 
+                        
+                    </p:dataTable>
+                </h:form> 
+                <p:commandButton value="Print Thsi Page " action="#{displayReservationToPassBean.printTicket}"/> &nbsp;
+                <p:button value="Go Back" outcome="train-search.xhtml"/> <br/> 
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

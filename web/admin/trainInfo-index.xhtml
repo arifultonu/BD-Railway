@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Train Info <br/><br/>
+
+                <p:button outcome="trainInfo-create.xhtml" value="Add New" /><br></br>
+            <h:form>
+                <p:dataTable id="route" resizableColumns="true" value="#{trainInfoBean.allTrain}" var="item" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                    <p:column filterBy="#{trainInfoBean.tid}">
+                        <f:facet name="header"> Train Id </f:facet>
+                        #{item.tid}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.tnumber}">
+                        <f:facet name="header"> Train Number</f:facet>
+                        #{item.tnumber}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.tname}">
+                        <f:facet name="header">Train Name </f:facet>
+                        #{item.tname}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.stto}">
+                        <f:facet name="header">Station to </f:facet>
+                        #{item.stto}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.stfrom}">
+                        <f:facet name="header"> Leave from  </f:facet>
+                        #{item.stfrom}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.deptime}">
+                        <f:facet name="header"> Departure Time </f:facet>
+                        #{item.deptime}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.atime}">
+                        <f:facet name="header"> Arrival Time </f:facet>
+                        #{item.atime}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.doff}">
+                        <f:facet name="header"> Off Day </f:facet>
+                        #{item.doff}
+                    </p:column>
+                    <p:column filterBy="#{trainInfoBean.routename}">
+                        <f:facet name="header"> Route Name </f:facet>
+                        #{item.routename}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Update</f:facet>
+                        <p:commandLink value="Update" action="#{trainInfoBean.getUpdateTrain}">
+                            <f:setPropertyActionListener target="#{trainInfoBean}" value="#{item}"/>
+                        </p:commandLink>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Delete</f:facet>
+                        <p:commandLink value="Delete" action="#{trainInfoBean.deleteTrain}"
+                                       onclick="if (!confirm('Sure to delete #{item.tid}?' ))
+                                       return false;"  update="route">
+                        <f:setPropertyActionListener target="#{trainInfoBean}" value="#{item}" />
+                        </p:commandLink>
+                    </p:column>                  
+                </p:dataTable>
+            </h:form>
+             <br/><br/><br/><br/>
+             <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

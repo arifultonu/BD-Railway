@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./publicTemplate.xhtml">
+
+            <ui:define name="content">
+                Contact Us<br/><br/>
+
+                <div class="container_12">
+                    <div id="con">  
+                        <div class="grid_3">                        
+                            Md. Ariful Islam<br/>
+                            43-R/13, 1st Floor, Indira Road, 
+                            Panthapath, Dhaka-1215 
+                            Cell: 01616356069, 01717819612
+                            E-mail: tonu2050@gmail.com
+
+                        </div>
+                        <div class="grid_3">
+                            Md. Enamul Haque<br/>
+                            60/2 Nabodhip Boshak Lane,
+                            Laxmibazar, Dhaka-1100.
+                            Cell No: 01913448483, 01719885508
+                            Email: enamulhaque404@gmail.com
+
+                        </div>
+                        <div class="grid_3">
+                            Enamul Haque<br/>
+                            31/1, Ismail Lane,New Eskaton
+                            Dhaka-1000
+                            Cell No: 01921687433
+                            Email: ehaque95@gmail.com
+
+                        </div>
+                        <div class="grid_3">
+                            Md. Mostafizur Rahman<br/>                           
+                            Vill: Asam Colony(Rober mor), 
+                            Post: Sopura, P.S: Boalia, 
+                            Dist: Rajshahi.
+                            Cell Phone: 01750156016, 01199383840
+                            E-mail: 999tota@gmail.com
+
+                        </div>
+                    </div>
+                </div> <br/><br/>
+                <h5>Google Map</h5>
+                <div class="border">
+                    <iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" 
+                            marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=los+angeles&amp;aq=&amp;sll=34.052234,-118.243685&amp;sspn=0.673578,1.124725&amp;ie=UTF8&amp;hq=&amp;hnear=Los+Angeles,+California&amp;ll=34.052234,-118.243685&amp;spn=0.010525,0.017574&amp;z=14&amp;iwloc=A&amp;layer=c&amp;cbll=34.052347,-118.243537&amp;panoid=8FcROQFXK6AHbsjeLiLX3Q&amp;cbp=12,226.15,,0,5.13&amp;output=svembed"></iframe>
+                </div>
+                <br/><br/>
+                <h:form id="regForm" >
+                    <p:fieldset>
+                        <p:messages id="messages"/>
+                        <h:panelGrid id="logPannelGrid" style="margin: 30px auto;  margin-top: 25px; text-align: right" cellspacing="8" columns="3">
+
+                            <h:panelGroup>
+                                <h:outputText value="Name: "/>
+                                <h:outputText style="color: red" value="*  "/>
+                            </h:panelGroup>
+                            <p:inputText id="firstName" value="#{passengerInfoBean.fname}" required="true" label="First Name" title="Enter your name" requiredMessage="Please Enter your name"/>
+                            <p:tooltip for="firstName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                            <h:panelGroup>
+                                <h:outputText value="Subject: "/>
+                                <h:outputText style="color: red" value="*  "/>
+                            </h:panelGroup>
+                            <p:inputText id="lastName" value="#{passengerInfoBean.lname}" required="true" label="Last Name" title="Enter subject" requiredMessage="Please Enter subject"/>
+                            <p:tooltip for="lastName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                            <h:panelGroup>
+                                <h:outputText value="Message: "/>
+                                <h:outputText style="color: red" value="*  "/>
+                            </h:panelGroup>
+                            <p:inputTextarea id="addr" value="#{passengerInfoBean.address}" required="true" label="Address" title="Enter your message" requiredMessage="Please Enter your message"/>
+                            <p:tooltip for="addr" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                            <h:outputText/>
+                            <h:commandButton value="Submit"  action="#{passengerInfoBean.insertPassengerInfo()}" />
+
+                        </h:panelGrid>
+                    </p:fieldset>
+                </h:form>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

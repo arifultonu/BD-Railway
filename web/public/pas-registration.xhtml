@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+        <f:view>
+            <ui:composition template="./publicTemplate.xhtml">
+                <ui:define name="title"> <h:outputText value="Registration form"/> </ui:define>
+                <ui:define name="header"> <h:outputText value="Registration form"/> </ui:define>
+
+                <ui:define name="content">
+                    <h:form id="regForm" >
+                        <p:growl id="addNew" showDetail="true"/>
+                        <p:fieldset styleClass="fieldset" legend="Registration Form">
+                            <p:messages id="messages"/>
+                            <h:panelGrid id="logPannelGrid" style="margin: 30px auto;  margin-top: 25px; text-align: right" cellspacing="8" columns="3">
+
+                                <h:panelGroup>
+                                    <h:outputText value="First Name: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputText id="firstName" value="#{passengerInfoBean.fname}" required="true" label="First Name" title="Enter your first name" requiredMessage="Please Enter your first name"/>
+                                <p:tooltip for="firstName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Last Name: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputText id="lastName" value="#{passengerInfoBean.lname}" required="true" label="Last Name" title="Enter your last name" requiredMessage="Please Enter your last name"/>
+                                <p:tooltip for="lastName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Gender " /> 
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:selectOneRadio id="gender" value="#{passengerInfoBean.sex}">  
+                                    <f:selectItem itemLabel="Male  " itemValue="Male" />  
+                                    <f:selectItem itemLabel="Female" itemValue="Female" />                                      
+                                </p:selectOneRadio>  
+                                <p:tooltip for="gender" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Date of Birth: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:calendar pattern="EEE, dd MMM, yyyy" showButtonPanel="true" value="#{passengerInfoBean.dob}" navigator="true" id="dob"/> 
+                                <p:tooltip for="dob" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Address: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputTextarea id="addr" value="#{passengerInfoBean.address}" required="true" label="Address" title="Enter your Address" requiredMessage="Please Enter your address"/>
+                                <p:tooltip for="addr" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="E-mail: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputText id="email" value="#{passengerInfoBean.email}" required="true" label="E-mail" title="Enter your email" requiredMessage="Please Enter your email" validatorMessage="Incorrect email!">
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </p:inputText>
+                                <p:tooltip for="email" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>  
+
+                                <h:panelGroup>
+                                    <h:outputText value="Phone No: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputText id="phone" value="#{passengerInfoBean.phone}" required="true" label="Phone no." title="Enter your phone no." requiredMessage="Please Enter your Phone no"/>
+                                <p:tooltip for="phone" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>  
+
+                                <h:panelGroup>
+                                    <h:outputText id="h" value=""/>                                    
+                                </h:panelGroup>
+                                <hr style="color: blue; outline-style: initial"/>
+                                <p:tooltip for="h" styleClass="tooltip" showEvent="focus" hideEvent="blur"/> 
+
+                                <h:panelGroup>
+                                    <h:outputText value="User Name: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:inputText id="username" value="#{passengerInfoBean.uname}" required="true" label="User Name" title="Enter your User Name" requiredMessage="Please Enter your user name"/>
+                                <p:tooltip for="username" styleClass="tooltip" showEvent="focus" hideEvent="blur"/> 
+
+                                <h:panelGroup>
+                                    <h:outputText value="Password: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:password id="p" value="#{passengerInfoBean.pass}" required="true" label="Password" title="Enter your password" requiredMessage="Please Enter your password"/>
+                                <p:tooltip for="p" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>  
+
+                                <h:panelGroup>
+                                    <h:outputText value="Sec.Question"/>
+                                    <h:outputText style="color: red" value="* "/>                                    
+                                </h:panelGroup>
+                                <p:inputText id="squestion" value="#{passengerInfoBean.sec_question}" required="true" label="Security Question" title="Enter your Question" requiredMessage="Please Enter your security question"/>
+                                <p:tooltip for="squestion" styleClass="tooltip" showEvent="focus" hideEvent="blur"/> 
+
+                                <h:panelGroup>
+                                    <h:outputText value="Answer"/>
+                                    <h:outputText style="color: red" value="* "/>                                    
+                                </h:panelGroup>
+                                <p:inputText id="sqans" value="#{passengerInfoBean.sec_answer}" required="true" label="Answer" title="Enter your Answer" requiredMessage="Please Enter your question answer"/>
+                                <p:tooltip for="sqans" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>  
+
+
+
+                               <!-- <h:panelGroup>
+                                    <h:outputText id="hh" value=""/>                                    
+                                </h:panelGroup>
+                                <hr style="color: blue;" />
+                                <p:tooltip for="hh" styleClass="tooltip" showEvent="focus" hideEvent="blur"/> 
+
+                                <h:panelGroup>
+                                    <h:outputText value="Enter the code: "/>
+                                    <h:outputText style="color: red" value="*  "/>
+                                </h:panelGroup>
+                                <p:captcha id="rc" label="Captcha" language="tr" theme="white"/> 
+                                <p:tooltip for="rc" styleClass="tooltip" showEvent="focus" hideEvent="blur"/> -->
+
+                               <p:outputLabel value=""/>
+                                <p:commandButton value="Submit"  action="#{passengerInfoBean.doInsert()}" update="addNew" />
+
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </h:form>
+                </ui:define>
+
+            </ui:composition>
+        </f:view>
+    </body>
+</html>
+

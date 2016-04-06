@@ -1,0 +1,306 @@
+/* 
+    Document   : style
+    Created on : Aug 14, 2013, 11:31:56 PM
+    Author     : Tonu
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*Start Default CSS*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: #666; line-height: 20px;
+    background-color: #ffffff; font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;  
+    
+}
+root { 
+    display: block;
+}
+h1 {
+    font-size: 34px;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+h4 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 18px;
+}
+h6 {
+    font-size: 14px;
+}
+
+a:link, a:visited {
+    color: #045491; font-weight : bold; text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: #045491; font-weight : bold; text-decoration : underline;
+}
+
+
+/*End Default CSS*/
+#board value{
+    font-size: 20px;
+}
+.header{    
+    background-color: #00b4ff; margin-bottom: 20px;
+}
+.head-pat1{    
+    background-color: #036fab;
+    /*    background: url('../images/background.jpg');*/
+}
+.head-db{    
+   background-color: #525252; height: 130px;
+    /*    background: url('../images/background.jpg');*/
+}
+.heading {
+    width: 100%; padding: 5px 0; display: table;
+}
+.foot{
+    background-color: #525252;   margin-top: 30px;
+}
+.footer-part1{
+    background-color: #525252;  
+}
+#footer{
+    width: 100%; padding: 20px 0; display: table; color: #ddd;
+}
+#footer_db{
+    margin-left: 40%; display: table; padding: 20px 0; 
+}
+.logo{
+    font-family: fantasy; color: white; font-size: 35px; font-weight: bold; padding: 20px 0 0 5px ;
+    text-shadow: 0 0 2px #555; display: inline;
+}
+.sub-title{
+    font-size: 18px;
+    padding-left: 30px;
+}
+.main_content{
+    background: url("images/pattern1.jpg") repeat #fff; min-height:425px; width: 100%;
+    padding: 0 0 0 0; display: table; 
+}
+.main_dbcontent{
+    background: url("images/pattern1.jpg") repeat #fff; min-height:425px; width: 100%;
+    padding: 20px 0; display: table; 
+}
+
+.slider{
+     margin: auto; 
+     float: left;
+}
+#loginForm{
+    padding: 10px 0 0 0; float: right;
+}
+#loginForm .fieldset{
+    width: 95%; margin:0 auto; margin-bottom: 10px; min-height: 275px; color: #5d5d5d; text-align: center;
+    border: 1px solid #asasas;  background-color: #eee;    
+}
+#loginForm .fieldset legend{
+    margin-top:-25px; margin-bottom:-21px; font-style:normal !important; font-weight:normal !important;
+}
+#loginForm .ui-fieldset-content{
+    padding: 15px 0 0 0 !important;
+}
+#loginForm .ui-inputfield{
+    width: 150px !important;
+}
+
+
+#regForm{
+    padding-top: 50px;  padding-bottom: 50px;
+}
+#regForm .fieldset{
+    width: 50%; margin: 0 auto; margin-bottom: 10px; min-height: 300px; color: #5d5d5d; text-align: center;
+    border: 1px solid #asasas; box-shadow: 2px 2px 10px #000;
+    /*    background: url("images/pattern 1.jpg"); */
+    -webkit-box-shadow: 0px 0px 4px 0px #555;   /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 0px 0px 4px 0px #555;  /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+  */
+}
+#regForm .fieldset legend{
+    margin-top:-25px; margin-bottom:-21px; font-style:normal !important; font-weight:normal !important;
+}
+.ui-inputfield{
+    width: 100% !important;
+}
+.ui-fieldset-content{
+    padding: 15px 0 0 0 !important;
+}
+
+
+#footer ul{ 
+    float: left;
+}
+#footer ul li{ 
+    list-style: none;
+}
+#footer ul li a{
+    color: #fff;
+}
+#footer ul li a:hover{
+    color: #036fab; text-decoration: none;
+}
+.welcome{
+    float:right; padding: 40px 20px 0 0; font-weight: normal; color: #fff;
+}
+.welcome ul li{
+    list-style: none; color: #fff; display: inline; padding-right: 10px;
+}
+.welcome ul li a:link, .welcome ul li a:visited {
+    color: white; font-weight : bold; text-decoration: none;
+}
+.welcome ul li a:link:hover, .welcome ul li a:visited:hover  {
+    color: black; font-weight : bold; text-decoration : none;
+}
+.header-right{
+    float:right; display: block; font-weight: normal; color: #fff; font-size: 1.2em; margin: -15px 20px 0 0; 
+}
+.contact{
+     padding: 20px 0 0 0; font-weight: normal; color: #fff; float: right;
+}
+.contact ul li{
+    list-style: none;  display: inline; 
+}
+.contact ul li a{
+    list-style: none; color: #fff; padding-left: 10px;
+}
+
+.log-message{
+    padding: 0 0 0 0; font-weight: normal;
+}
+.log-message ul li{
+      list-style: none;  color: #fff; display: inline;
+}
+.log-message ul li a{
+    list-style: none; color: #fff; padding-left: 10px;
+}
+.content-top2{
+    margin: 30px 0 0  0;
+}
+.sidebar {
+    float: left; margin-top:10px; background:#eee; min-height: 500px;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px; /* Saf3-4, iOS 1-3.2, Android ≤1.6 */
+    -moz-border-radius: 5px; /* FF1-3.6 */
+    border-radius: 5px; /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+}
+.sidebar-widget {
+    margin-bottom: 30px; display: table;
+}
+.content-main{
+    float: left; margin-top:10px; background:#fff; min-height: 425px;
+}
+.right_dbcontent{
+    float: left; padding: 0 0 0 3%; min-height: 425px;
+}
+.left_dbmenu{
+    float: left;
+}
+.left_tmmenu {
+    float: left;
+    width: 100px;
+    background-color: #ddd;
+}
+.ui-datatable{
+   width: 100% !important;
+}
+
+.border{
+    border: 1px solid #ddd;
+    width: 100%;
+    margin: 30px 0 0 0;
+}
+
+.slogan{
+    padding: 15px 0 0 0;
+  margin-left: 35%;
+    font-size: 22px;
+    color: #666;
+    font-family: monospace;
+    
+}
+
+.ui-panel{
+    margin: 20px 20px 0 0  !important;
+}
+
+.ui-widget-header{
+    color: #000000 !important;
+}
+.ui-accordion-header a{
+  color:#000 !important;
+}
+/**#loginForm{
+    padding-top: 50px;  padding-bottom: 50px;
+}
+#loginForm .fieldset{
+    width: 50%; margin: 0 auto; margin-bottom: 10px; min-height: 300px; color: #5d5d5d; text-align: center;
+    border: 1px solid #asasas; box-shadow: 2px 2px 10px #000;
+        background: url("images/pattern 1.jpg"); 
+    -webkit-box-shadow: 0px 0px 4px 0px #555;    Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 
+    box-shadow: 0px 0px 4px 0px #555;   Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+  
+}
+#loginForm .fieldset legend{
+    margin-top:-25px; margin-bottom:-21px; font-style:normal !important; font-weight:normal !important;
+}*/
+
+/*Start  CssLayout */
+/*#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;   
+    margin: 0px 0px 0px 0px;
+    width: 50%;
+}
+
+#bottom {
+    position: relative;
+    background-color: #525252;   
+    margin: 0px 0px 0px 0px;
+       width: 50%;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;   
+    width: 170px;
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+       width: 50%;
+}
+
+.right_content {
+    background-color: #dddddd;   
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+/*End CssLayout */

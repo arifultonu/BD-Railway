@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Route info <br/><br/>
+                
+                <h:form>
+                <p:commandButton action="#{routeInfoBean.insertRoute}" value="Add New" onclick="routeDia.show()"/><br></br>
+                </h:form>
+                
+                <h:form prependId="false"> 
+                    
+                    <p:dialog widgetVar="routeDia" resizable="true" header="Add New Route" closable="true" draggable="true">
+                       
+                            <p:panelGrid columns="3">
+                                <h:outputText value="Route Name"/>
+                                <p:inputText value="#{routeInfoBean.rname}" id="rname" required="true" requiredMessage="#{errMsg}"/>
+                                <p:message for="rname"/> 
+
+                                <h:outputText value=""/>
+                                <p:commandButton value="Submit" action="#{routeInfoBean.insertRoute}" 
+                                                 update="routeinfo" oncomplete="routeDia.hide()"/>
+                            </p:panelGrid>                      
+                    </p:dialog>
+
+                    <p:dataTable id="routeinfo" resizableColumns="true" value="#{routeInfoBean.allRoute}" var="item" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                        <p:column filterBy="#{routeInfoBean.rid}">
+                            <f:facet name="header"> Route Id </f:facet>
+                                #{item.rid}
+                        </p:column>
+                        <p:column filterBy="#{routeInfoBean.rname}">
+                            <f:facet name="header">Route Name</f:facet>
+                                #{item.rname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Update</f:facet>
+                            <p:commandLink value="Edit" action="#{routeInfoBean.goUpadateRoute}">
+                                <f:setPropertyActionListener target="#{routeInfoBean}" value="#{item}"/>
+                            </p:commandLink>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <p:commandLink value="Delete" action="#{routeInfoBean.deleteRoute}"
+                                           onclick="if (!confirm('Sure to delete #{item.rid}?'))
+                                                       return false;"  update="routeinfo">
+                                <f:setPropertyActionListener target="#{routeInfoBean}" value="#{item}" />
+                            </p:commandLink>
+                        </p:column>                  
+                    </p:dataTable>
+                </h:form>
+
+                <br/><br/><br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

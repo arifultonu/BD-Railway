@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Fare Info <br/><br/>
+
+                <p:button outcome="fare-create.xhtml" value="Add New" /><br></br>
+                <h:form>
+
+                    <p:dataTable id="fareB" resizableColumns="true" value="#{fareBean.allFareInfo}" var="item" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                        <p:column filterBy="#{item.stationfrom}">
+                            <f:facet name="header">Station From</f:facet>
+                                #{item.stationfrom}
+                        </p:column>
+                        <p:column filterBy="#{item.stationto}">
+                            <f:facet name="header">Station To</f:facet>
+                                #{item.stationto}
+                        </p:column>
+                        <p:column filterBy="#{item.classname}">
+                            <f:facet name="header">Class Name</f:facet>
+                                #{item.classname}
+                        </p:column>
+                        <p:column filterBy="#{item.fareamount}">
+                            <f:facet name="header">Fare Amount</f:facet>
+                                #{item.fareamount}
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Update</f:facet>
+                            <p:commandLink value="Edit" action="#{fareBean.goEditPage()}" >
+                                <f:setPropertyActionListener target="#{fareBean}" value="#{item}"/>
+                            </p:commandLink>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <p:commandLink value="Delete" action="#{fareBean.delete}"
+                                           onclick="if (!confirm('Are you sure to delete #{item.stationfrom}?'))
+                                                       return false;"                                                            
+                                           update="fareB">
+                                <f:setPropertyActionListener target="#{fareBean}" value="#{item}" />
+                            </p:commandLink>
+                        </p:column>
+
+
+
+                    </p:dataTable>
+
+                </h:form>
+                <br/><br/><br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Go Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

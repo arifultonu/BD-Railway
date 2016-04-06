@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data" id="dform"> 
+                    <p:growl id="grl" autoUpdate="true" showDetail="true"/>
+                    <p:fieldset legend="Add Notice" toggleable="true" collapsed="true" style="font-size: 9pt">
+                        <p:panelGrid columns="3">
+                            <p:column>
+                                <p:outputLabel value="Notice title :"/><br/>
+                                <p:inputText id="nt" value="#{noticeBean.noticeTitle}" />
+                                <p:watermark value="Enter Title" for="nt"/>
+                                <br/><br/>
+                                <p:outputLabel value="Publish Date :"/><br/>
+                                <p:calendar value="#{noticeBean.publishDate}" pattern="dd/MM/yyyy"/>                  
+                                <br/><br/>
+                                <p:outputLabel value="Expire Date :"/><br/>
+                                <p:calendar value="#{noticeBean.expireDate}" pattern="dd/MM/yyyy" />
+                                <br/><br/>
+                                <p:outputLabel value="Notice Image :"/><br/>
+                                <p:fileUpload value="#{noticeBean.noticeIamge}" mode="simple" id="photo" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" style="width: 200px;"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Notice :"/><br/>
+                                <p:inputTextarea value="#{noticeBean.notice}" rows="7" cols="70" style="font-size: 10pt;"  /><br/>
+
+                                <p:commandButton value="Save" action="#{noticeBean.insertNotice()}" ajax="false" update="addNotice"/>
+                            </p:column>
+                        </p:panelGrid>
+                        <p:dataTable id="addNotice" value="#{noticeBean.allNotice}" var="item" style="font-size: 9pt;">
+                            <p:column>
+                                <f:facet name="header">Notice Title</f:facet>
+                                    #{item.noticeTitle}
+                            </p:column>
+
+
+                            <p:column>
+                                <f:facet name="header">Public Date</f:facet>
+                                    #{item.publishDate}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Expire Date</f:facet>
+                                    #{item.expireDate}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Notice</f:facet>
+                                    #{item.notice}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Notice Image</f:facet>
+                                <p:graphicImage value="../DisplayRailwayPhoto?noti_id=#{item.noticeId}" width="50" height="60"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Edit</f:facet>
+                                <p:commandButton value="Edit" action="#{updateNoticeBean.doSelectRow()}" oncomplete="editdialog.show()" update=":dform:editpane" >
+                                    <f:setPropertyActionListener target="#{updateNoticeBean.selectRow}" value="#{item}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <p:commandButton value="Delete" action="#{noticeBean.deleteData()}"
+                                                 onclick="if (!confirm('Are you sure to delete #{item.noticeTitle}?'))
+                                                             return false;" update="addNotice" style="font-size: 7pt;color: red;">
+                                    <f:setPropertyActionListener target="#{noticeBean}" value="#{item}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </p:fieldset>
+                    <p:dialog id="dialog" widgetVar="editdialog" showEffect="clip" hideEffect="fold" resizable="false" header="Edit Notice">
+                        <p:panelGrid id="editpane"  columns="2">
+                            <p:outputLabel value="Notice Title"/>
+                            <p:inputText value="#{updateNoticeBean.noticeTitle}"/>
+
+                            <p:outputLabel value="Publish Date"/>
+                            <p:inputText value="#{updateNoticeBean.publishDate}"/>
+
+                            <p:outputLabel value="Expire Date"/>
+                            <p:inputText value="#{updateNoticeBean.expireDate}"/>
+
+                            <p:outputLabel value="Notice Title"/>
+                            <p:inputTextarea value="#{updateNoticeBean.notice}"/>
+                            <p:commandButton value="Update" action="#" update=":dform:grl,:dform:addNotice" oncomplete="editdialog.hide()"/>
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

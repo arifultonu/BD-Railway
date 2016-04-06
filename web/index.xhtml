@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"          
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <title>BD Railway</title>
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+            <link href="style.css" rel="stylesheet" type="text/css" /> 
+            <link href="resources/css/ddsmoothmenu.css" rel="stylesheet" type="text/css" /> 
+            <link href="resources/css/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" /> 
+            <link href="resources/css/grid.css" rel="stylesheet" type="text/css" /> 
+
+            <script type="text/javascript" src="./resources/js/ddsmoothmenu.js"></script>
+        </h:head>
+
+        <h:body>
+
+            <ui:composition template="./indexTemplate.xhtml">
+                <ui:define name="content">
+            <div class="main_content">
+                <div class="container_12">  
+
+                    <div class="content-top1">
+                        <div class="grid_8_no_margin">
+
+                            <div class="slider">
+                                <p:galleria value="#{galleriaBean.images}"  var="image" panelWidth="500" panelHeight="313" >  
+                                    <p:graphicImage value="resources/images/galleria/#{image}" />  
+                                </p:galleria> 
+                            </div>
+
+                        </div>
+                        <div class="grid_4_no_margin">
+                            <div id="loginForm">
+                                <h:form id="loginForm">
+                                    <p:fieldset styleClass="fieldset" legend="Authentication Form">
+                                        <p:messages id="messages"/>
+                                        <h:panelGrid id="logPannelGrid" style="margin: -5px auto;  margin-top: 5px; text-align: left" cellspacing="8" columns="3">
+
+                                            <h:panelGroup>
+                                                <h:outputText value="User Name: "/>
+                                                <h:outputText style="color: red" value="*  "/>
+                                            </h:panelGroup>
+                                            <p:inputText id="userName" value="#{loginBean.uname}" required="true" label="User Name" title="Enter your user name"/>
+                                            <p:tooltip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+
+                                            <h:panelGroup>
+                                                <h:outputText value="Password: "/>
+                                                <h:outputText style="color: red" value="*  "/>
+                                            </h:panelGroup>
+                                            <p:password id="p" value="#{loginBean.pass}"  feedback="false" redisplay="true" required="true" label="Password" title="Enter your password"/>
+                                            <p:tooltip for="p" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>                             
+
+                                            <h:panelGroup>
+                                                <p:commandButton action="#{loginBean.loginProject}" value="Login" update="loginForm" ajax="true"></p:commandButton>   &nbsp;                                      
+                                                <h:selectBooleanCheckbox id="remember" value="#{loginBean.remember}" onclick="return check(this);" />                                            
+                                            </h:panelGroup>
+                                            <h:outputText value="Remember me"/>
+
+                                        </h:panelGrid>
+<!--                                        <p:commandLink id="bb" action="signIn"  value="Forgot password?   " />  
+                                        <p:commandLink styleClass="forgotUN" id="bbb" action="signIn"  value="  Forgot username?" /> -->
+
+                                       <!-- <p>
+                                            <h:outputText styleClass="forgotUN" id="re" value="If you are not registered!" /> 
+                                            <p:commandButton id="rr" action="regpage"  value="  Registration Now" />
+                                        </p>-->
+                                        <h:link value="Registration Now" outcome="/public/pas-registration.xhtml"/>
+                                    </p:fieldset>
+                                    
+                                </h:form>                        
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--End Top slider & Login form-->
+
+            <div class="clear"></div> 
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="border"> </div>
+                    <div class="slogan"> Better, Secured and Safety Journey</div>
+                    <div class="border"> </div>
+                </div>
+            </div>
+            <!--End Top Slogan-->
+
+            <div class="clear"></div> 
+            <div class="main_content">
+                <div class="container_12">  
+                    <div class="content-top2">
+                        <div class="grid_4">
+                            <h:graphicImage library="images" name="service.png" title="Service"/>
+                            Service fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+
+                            <p> 
+                                Service fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            </p>
+                        </div>
+                        <div class="grid_4">
+                            <h:graphicImage library="images" name="faster.png" title="Faster"/>
+                            Faster fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgg
+
+                            <p> 
+                                Service fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            </p>
+
+                        </div>
+                        <div class="grid_4">
+                            <h:graphicImage library="images" name="secured.png" title="Secured"/>
+                            Secured payment fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf 
+
+                            <p> 
+                                Service fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                                fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div> 
+                    <div class="content-top2">
+                        <div class="grid_12">                    
+
+                            Service fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+                            fgdfghfhfgf fdgf fgdfghdgdf dfgdhfgh dfhgdhf dfhgthsd d sgh f ghgd
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </ui:define>
+          </ui:composition>
+        </h:body>
+
+    </f:view>
+</html>
+

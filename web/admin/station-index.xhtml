@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                Station Info <br/><br/>
+
+                <p:button outcome="station-create.xhtml" value="Add New" /><br></br>
+                <h:form>
+                    <p:dataTable id="station" resizableColumns="true" value="#{routeInfoBean.allStation}" var="item" paginator="true" rows="5" rowsPerPageTemplate="5,10,20,30">
+                        <p:column filterBy="#{routeInfoBean.stid}">
+                            <f:facet name="header"> Station Id </f:facet>
+                                #{item.stid}
+                        </p:column>
+                        <p:column filterBy="#{routeInfoBean.stname}">
+                            <f:facet name="header">Station Name</f:facet>
+                                #{item.stname}
+                        </p:column>
+                        <p:column filterBy="#{routeInfoBean.rname}">
+                            <f:facet name="header">Route Name</f:facet>
+                                #{item.rname}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Update</f:facet>
+                            <p:commandLink value="Edit" action="#{routeInfoBean.goUpadateStation}">
+                                <f:setPropertyActionListener target="#{routeInfoBean}" value="#{item}"/>
+                            </p:commandLink>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <p:commandLink value="Delete" action="#{routeInfoBean.deleteStation}"
+                                           onclick="if (!confirm('Sure to delete #{item.stid}?'))
+                                                   return false;"  update="station">
+                                <f:setPropertyActionListener target="#{routeInfoBean}" value="#{item}" />
+                            </p:commandLink>
+                        </p:column>                  
+                    </p:dataTable>
+                </h:form>
+                <br/><br/><br/><br/>
+                <p:button outcome="admin-home.xhtml" value="Dashboard Home" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
